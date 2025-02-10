@@ -1,0 +1,219 @@
+@import "../../styles/guidline.scss";
+@import "../../styles/_guidlineColor.scss";
+@import "../../styles/_guidlineMedia.scss";
+@import "../../styles/_variables.scss";
+
+.tech_stack_block{
+  .support_technical_guide_section{
+    background-color: $white;
+    &.bg_dark{
+      background-color: $primary_light;
+    }
+  }
+.support_technical_guide_section {
+  background-color: $primary_light;
+  .technical_guid_wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    .technical_guid_left {
+      flex-basis: 35%;
+      padding-right: 24px;
+      @include ipad-view {
+        padding-right: 16px;
+        flex-basis: 40%;
+      }
+      @include tab-view {
+        padding-right: 0;
+        flex-basis: 100%;
+      }
+      .technical_guid_left_wrapper {
+        position: sticky;
+        top: 100px;
+        border-radius: 15px;
+        @include tab-view {
+          position: relative;
+          top: 0;
+        }
+        .support_title {
+          p {
+            font-family: sans-serif;
+
+            &.support_title_upper {
+              // color: $primary_theme;
+              opacity: 0.3;
+              font-size: 14px;
+              font-weight: 700;
+              line-height: 24px;
+              text-align: left;
+              margin-bottom: 12px;
+              @include tab-view {
+                font-size: 14px;
+                line-height: 22px;
+                margin-bottom: 8px;
+              }
+            }
+
+            &.support_title_text {
+              color: $dark_blue_black;
+              font-size: 36px;
+              font-weight: 600;
+              line-height: 44px;
+              letter-spacing: -0.02em;
+              text-align: left;
+              margin-bottom: 16px;
+              @include xsm-laptop-screen {
+                font-size: 32px;
+                line-height: 40px;
+              }
+              @include tab-max {
+                font-size: 28px;
+                line-height: 36px;
+              }
+              @include tab-view {
+                font-size: 20px;
+                line-height: 32px;
+                margin-bottom: 12px;
+              }
+            }
+          }
+        }
+        .support_nav_body {
+          .support_nav_wrapper {
+            ul {
+              &.support_nav_ul {
+                list-style: disc;
+                li {
+                  &.support_nav_li {
+                    margin-bottom: 4px;
+                    color: $slate_gray;
+                    button {
+                      &.nav_link {
+                        font-family: sans-serif;
+                        text-decoration: none;
+                        color: $mystical_shade;
+                        font-size: 18px;
+                        font-weight: 400;
+                        line-height: 28px;
+                        text-align: left;
+                        display: block;
+                        background-color: transparent;
+                        border: 0px;
+                        transition: all .3s;
+                        @include tab-view {
+                          font-size: 18px;
+                          line-height: 26px;
+                        }
+                        &:hover{
+                          color: $dark_blue_black;
+                        }
+                      }
+                    }
+                    &.active {
+                      color: $dark_blue_black;
+                      button {
+                        color: $dark_blue_black;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .technical_guid_right {
+      flex-basis: 65%;
+      padding-left: 24px;
+      @include ipad-view {
+        padding-left: 16px;
+        flex-basis: 60%;
+      }
+      @include tab-view {
+        padding-left: 0;
+        flex-basis: 100%;
+        margin-top: 5px;
+      }
+      .technical_guid_right_wrapper {
+        border-radius: 22px 18px;
+        .technical_guid_qanda_wrapper {
+          & + .technical_guid_qanda_wrapper {
+            margin-top: 32px;
+          }
+          @include tab-view {
+            & + .technical_guid_qanda_wrapper {
+              margin-top: 20px;
+            }
+          }
+          .technical_quid_que {
+            p {
+              font-family: sans-serif;
+              font-size: 18px;
+              font-weight: 500;
+              line-height: 28px;
+              text-align: left;
+              color: $dark_blue_black;
+              margin-bottom: 8px;
+              @include tab-view {
+                font-size: 16px;
+                line-height: 26px;
+              }
+            }
+            h2{
+              color: $dark_blue_black;
+              font-size: 36px;
+              font-weight: 600;
+              line-height: 44px;
+              letter-spacing: -0.02em;
+              text-align: left;
+              margin-bottom: 16px;
+              @include xsm-laptop-screen {
+                font-size: 32px;
+                line-height: 40px;
+              }
+              @include tab-max {
+                font-size: 28px;
+                line-height: 36px;
+              }
+              @include tab-view {
+                font-size: 20px;
+                line-height: 32px;
+                margin-bottom: 12px;
+              }
+            }
+          }
+          .technical_quid_ans {
+            p {
+              font-size: 16px;
+              font-weight: 400;
+              line-height: 24px;
+              text-align: left;
+              color: $slate_gray;
+              margin-bottom: 0;
+              span{
+                color: $slate_gray;
+              }
+              & + p {
+                margin-top: 20px;
+              }
+              @include tab-view {
+                font-size: 14px;
+                line-height: 22px;
+                & + p {
+                  margin-top: 14px;
+                }
+              }
+              &.code_text{
+                margin: 0;
+                padding: 0;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+}

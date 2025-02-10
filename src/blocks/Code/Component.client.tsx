@@ -6,15 +6,17 @@ import { CopyButton } from './CopyButton'
 type Props = {
   code: string
   language?: string
+  theme?: 'light' | 'dark' | string
 }
 
-export const Code: React.FC<Props> = ({ code, language = '' }) => {
+export const Code: React.FC<Props> = ({ code, theme, language = '' }) => {
   if (!code) return null
 
   return (
-    <Highlight code={code} language={language} theme={themes.vsDark}>
+    <Highlight code={code} language={language} theme={theme}>
       {({ getLineProps, getTokenProps, tokens }) => (
         <pre className="bg-black p-4 border text-xs border-border rounded overflow-x-auto">
+          <CopyButton code={code} />
           {tokens.map((line, i) => (
             <div key={i} {...getLineProps({ className: 'table-row', line })}>
               <span className="table-cell select-none text-right text-white/25">{i + 1}</span>
@@ -25,7 +27,6 @@ export const Code: React.FC<Props> = ({ code, language = '' }) => {
               </span>
             </div>
           ))}
-          <CopyButton code={code} />
         </pre>
       )}
     </Highlight>

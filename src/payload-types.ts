@@ -135,7 +135,44 @@ export interface Page {
       | null;
     media?: (string | null) | Media;
   };
-  layout: (CallToActionBlock | ContentBlock | MediaBlock | ArchiveBlock | FormBlock)[];
+  layout: (
+    | CallToActionBlock
+    | ContentBlock
+    | MediaBlock
+    | ArchiveBlock
+    | FormBlock
+    | {
+        showInScroller?: ('notShow' | 'Show') | null;
+        scrollerTitle?: string | null;
+        theme?: ('dark' | 'light') | null;
+        smallTitle: string;
+        mainTitle: string;
+        BoxData?:
+          | {
+              title: string;
+              description: {
+                root: {
+                  type: string;
+                  children: {
+                    type: string;
+                    version: number;
+                    [k: string]: unknown;
+                  }[];
+                  direction: ('ltr' | 'rtl') | null;
+                  format: 'left' | 'start' | 'center' | 'right' | 'end' | 'justify' | '';
+                  indent: number;
+                  version: number;
+                };
+                [k: string]: unknown;
+              };
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+        blockName?: string | null;
+        blockType: 'technical_guide';
+      }
+  )[];
   meta?: {
     title?: string | null;
     /**
@@ -960,6 +997,24 @@ export interface PagesSelect<T extends boolean = true> {
         mediaBlock?: T | MediaBlockSelect<T>;
         archive?: T | ArchiveBlockSelect<T>;
         formBlock?: T | FormBlockSelect<T>;
+        technical_guide?:
+          | T
+          | {
+              showInScroller?: T;
+              scrollerTitle?: T;
+              theme?: T;
+              smallTitle?: T;
+              mainTitle?: T;
+              BoxData?:
+                | T
+                | {
+                    title?: T;
+                    description?: T;
+                    id?: T;
+                  };
+              id?: T;
+              blockName?: T;
+            };
       };
   meta?:
     | T
@@ -1600,6 +1655,43 @@ export interface TaskSchedulePublish {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "CodeBlock".
+ */
+export interface CodeBlock {
+  language?:
+    | (
+        | 'c'
+        | 'csharp'
+        | 'cpp'
+        | 'css'
+        | 'dart'
+        | 'go'
+        | 'html'
+        | 'java'
+        | 'javascript'
+        | 'kotlin'
+        | 'lua'
+        | 'objective-c'
+        | 'perl'
+        | 'php'
+        | 'python'
+        | 'r'
+        | 'ruby'
+        | 'rust'
+        | 'scala'
+        | 'shell'
+        | 'swift'
+        | 'typescript'
+        | 'visual-basic'
+      )
+    | null;
+  code: string;
+  id?: string | null;
+  blockName?: string | null;
+  blockType: 'code';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "BannerBlock".
  */
 export interface BannerBlock {
@@ -1622,17 +1714,6 @@ export interface BannerBlock {
   id?: string | null;
   blockName?: string | null;
   blockType: 'banner';
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "CodeBlock".
- */
-export interface CodeBlock {
-  language?: ('typescript' | 'javascript' | 'css') | null;
-  code: string;
-  id?: string | null;
-  blockName?: string | null;
-  blockType: 'code';
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
